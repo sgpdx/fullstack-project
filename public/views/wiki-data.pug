@@ -1,0 +1,18 @@
+//- Initial code outline from Fullstack HW3
+//- Edits and additional code by Serena Glick, Winter 2026
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      h1 #{heading}      
+      section.text Welcome to the #{title} Wiki.
+      if data && data.length > 0
+        ol
+          each item in data
+            li #{item.item1} - #{item.item2}
+      else
+        p No data available
+    include includes/footer.pug

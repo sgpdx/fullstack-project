@@ -1,0 +1,16 @@
+//- Initial code outline from Fullstack/HW3
+//- Edits and additional code by Serena Glick, Winter 2026
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      h1 Wiki
+      section.text Click the category to learn more 
+      .flexbox-container
+        a.item.item1(href="/plants") Plants
+        a.item.item2(href="/zombies") Zombies
+        a.item.item3(href="/areas") Areas
+    include includes/footer.pug

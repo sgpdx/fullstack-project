@@ -1,0 +1,44 @@
+Journal for Full Stack Final Project
+Serena Glick / sglick@pdx.edu / sgpdx (GitHub)
+
+Early Feb, 2026
+- Saved a copy of my web dev project in a different repo, so I could overwrite this one
+
+Sunday February 8, 2026
+- Deleted unneeded files and added new files using HW 3 as a base for code to start with 
+(using Pug, Express.js)
+- Using GitHub Copilot, figured out how to convert this code into one that can run via github.io,
+since we aren't using "node app.js" to run it anymore, like we did in HW3.
+It suggested a build.js file, and then I need to run "npm run build" 
+to create the html pages based on the pug templates
+
+Saturday February 14, 2026
+- Set up all the pages with their pug templates and a basic outline for the page with
+headings, placeholder flex or text boxes, etc.  Ran "npm run build" to set up the .html
+- Testing the site constantly with nodemon
+- Starting to play around with styles to make the Navbar Green to be on the 'plants' theme
+- Next steps, I need to figure out how to bring in the API Data dynamically
+
+Sunday Feburary 15, 2025
+- Went back over the requirements for the project and realized that I don't actually have to use a database!
+I remember the professor saying we needed to create an API and a Database during our Zoom Check-in call, 
+but looking back over the instructions, that's option 1: 
+"Build a front-end, back-end, and an API, implementing calls to create, update, and delete items from a database"
+I specifically chose option 2 which is just using an API: 
+"Build a front-end and a back-end, and use a third-party API on the back-end"
+So, that's a relief.  I need to focus more on my back-end and calling the API next.
+- A classmate for HW3 suggested caching the API data, which is a great idea, so I added that here
+just like how I updated my code in HW 3 (check for cached data before calling the API)
+- Removed tracking of the "node_modules" folder from github and added to .gitignore
+- Removed all traces of HW3 API data, replaced it with PVZ API Data
+- More styling on the flexboxes for the wiki & home page
+
+Monday February 16, 2026
+- Working on trying to get the API data in but realzing that I can't use Express in the same way
+as I used it for HW 3, because "GitHub Pages doesn't support running backend servers at all. It only serves static files."
+So I need to run "npm build" each time which doesn't play well with Express!  Goihg to email the professor to confirm.
+
+Wednesday February 18, 2026
+- Got the email from the professor that we're deploying to Vercel, not github pages, so I made a new repo for the project
+code called "fullstack-project" and that way all my previous merges will show as new code for the PR review that we will 
+be doing for discussion 5, so just as well!
