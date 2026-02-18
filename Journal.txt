@@ -42,3 +42,19 @@ Wednesday February 18, 2026
 - Got the email from the professor that we're deploying to Vercel, not github pages, so I made a new repo for the project
 code called "fullstack-project" and that way all my previous merges will show as new code for the PR review that we will 
 be doing for discussion 5, so just as well!
+- Set up the Wiki Links to display the details for the item clicked on
+- Added a "back to Wiki" button link for easier navigation
+- Originally had initial data (unordered list of items to click on) and its details (also an unordered
+list, but with bold "key" and regular text "value" pairs listed out) but then had GitHub Copilot help me 
+to refactor those into two separate templates
+- Made sure there was a "back to list" link to get back to the list page
+- Having some issues with the Areas data not loading, and debuggin it, GitHub Copilot found it was getting a 
+'404' response, which is really strange considering I can go type in that page directly and see data.  
+
+* TO DO ITEMS*
+- Troubleshoot the areas 404 issue or just remove it from the Wiki if I can't figure it out
+- Try to incorporate some React code to make the loading of the Wiki page from the list of items 
+to the details for a particular item be a bit more of a smoother transition
+- In my project outline I also said I'd have a search bar, instead of just manually scanning the list
+of items, so I need to implement that as well
+- Still haven't started on the "Battle" page, but I want my Wiki looking nice and functional first
