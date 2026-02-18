@@ -1,6 +1,6 @@
-# sgpdx.github.io [ WORK IN PROGRESS ]
+# Final Project for Full Stack
 
-## site deployed to: https://sgpdx.github.io/
+## [ WORK IN PROGRESS ]
 
-- Site previously deployed for a Web Development course via documentation found at: https://docs.github.com/en/pages
-- More to come !!!
+- Created by Serena Glick, sglick@pdx.edu
+- More to come soon

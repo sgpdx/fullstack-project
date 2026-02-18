@@ -37,7 +37,7 @@ app.get("/plants", async (req, res) => {
         plantsAPIURL + "/" + encodeURIComponent(item),
       );
       const detail = response.ok ? await response.json() : null;
-      return res.render("wiki-data", {
+      return res.render("wiki-details", {
         title: "Plants",
         heading: `Details for ${item}`,
         baseUrl: plantsAPIURL,
@@ -67,7 +67,7 @@ app.get("/zombies", async (req, res) => {
         zombiesAPIURL + "/" + encodeURIComponent(item),
       );
       const detail = response.ok ? await response.json() : null;
-      return res.render("wiki-data", {
+      return res.render("wiki-details", {
         title: "Zombies",
         heading: `Details for ${item}`,
         baseUrl: zombiesAPIURL,
@@ -97,7 +97,7 @@ app.get("/areas", async (req, res) => {
         areasAPIURL + "/" + encodeURIComponent(item),
       );
       const detail = response.ok ? await response.json() : null;
-      return res.render("wiki-data", {
+      return res.render("wiki-details", {
         title: "Areas",
         heading: `Details for ${item}`,
         baseUrl: areasAPIURL,
