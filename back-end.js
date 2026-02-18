@@ -7,13 +7,17 @@ const rawCache = {
   areas: null,
 };
 
+const plantsAPIURL = "https://pvz-2-api.vercel.app/api/plants";
+const zombiesAPIURL = "https://pvz-2-api.vercel.app/api/zombies";
+const areasAPIURL = "https://pvz-2-api.vercel.app/api/areas";
+
 async function getPlantsData() {
   try {
     let data;
     if (rawCache.plants) {
       data = rawCache.plants;
     } else {
-      const response = await fetch("https://pvz-2-api.vercel.app/api/plants");
+      const response = await fetch(plantsAPIURL);
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`);
       }
@@ -33,7 +37,7 @@ async function getZombiesData() {
     if (rawCache.zombies) {
       data = rawCache.zombies;
     } else {
-      const response = await fetch("https://pvz-2-api.vercel.app/api/zombies");
+      const response = await fetch(zombiesAPIURL);
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`);
       }
@@ -53,7 +57,7 @@ async function getAreasData() {
     if (rawCache.areas) {
       data = rawCache.areas;
     } else {
-      const response = await fetch("https://pvz-2-api.vercel.app/api/areas");
+      const response = await fetch(areasAPIURL);
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`);
       }
@@ -67,4 +71,11 @@ async function getAreasData() {
   }
 }
 
-module.exports = { getPlantsData, getZombiesData, getAreasData };
+module.exports = {
+  getPlantsData,
+  getZombiesData,
+  getAreasData,
+  plantsAPIURL,
+  zombiesAPIURL,
+  areasAPIURL,
+};

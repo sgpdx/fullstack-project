@@ -9,6 +9,9 @@ const {
   getPlantsData,
   getZombiesData,
   getAreasData,
+  plantsAPIURL,
+  zombiesAPIURL,
+  areasAPIURL,
 } = require("./back-end.js");
 
 app.set("views", "./public/views");
@@ -23,32 +26,95 @@ app.get("/", (req, res) => {
 });
 
 app.get("/wiki", async (req, res) => {
-  res.render("wiki");
+  res.render("wiki-main");
 });
 
 app.get("/plants", async (req, res) => {
+  const item = req.query.item;
+  if (item) {
+    try {
+      const response = await fetch(
+        plantsAPIURL + "/" + encodeURIComponent(item),
+      );
+      const detail = response.ok ? await response.json() : null;
+      return res.render("wiki-data", {
+        title: "Plants",
+        heading: `Details for ${item}`,
+        baseUrl: plantsAPIURL,
+        detailData: detail,
+        itemName: item,
+        listPath: "/plants",
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send("Error fetching item data");
+    }
+  }
   const plantsData = await getPlantsData();
-  res.render("plants", {
+  res.render("wiki-data", {
     title: "Plants",
     heading: "Plants of Plants vs. Zombies",
+    baseUrl: plantsAPIURL,
     data: plantsData,
   });
 });
 
 app.get("/zombies", async (req, res) => {
+  const item = req.query.item;
+  if (item) {
+    try {
+      const response = await fetch(
+        zombiesAPIURL + "/" + encodeURIComponent(item),
+      );
+      const detail = response.ok ? await response.json() : null;
+      return res.render("wiki-data", {
+        title: "Zombies",
+        heading: `Details for ${item}`,
+        baseUrl: zombiesAPIURL,
+        detailData: detail,
+        itemName: item,
+        listPath: "/zombies",
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send("Error fetching item data");
+    }
+  }
   const zombiesData = await getZombiesData();
-  res.render("zombies", {
+  res.render("wiki-data", {
     title: "Zombies",
     heading: "Zombies of Plants vs. Zombies",
+    baseUrl: zombiesAPIURL,
     data: zombiesData,
   });
 });
 
 app.get("/areas", async (req, res) => {
+  const item = req.query.item;
+  if (item) {
+    try {
+      const response = await fetch(
+        areasAPIURL + "/" + encodeURIComponent(item),
+      );
+      const detail = response.ok ? await response.json() : null;
+      return res.render("wiki-data", {
+        title: "Areas",
+        heading: `Details for ${item}`,
+        baseUrl: areasAPIURL,
+        detailData: detail,
+        itemName: item,
+        listPath: "/areas",
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send("Error fetching item data");
+    }
+  }
   const areasData = await getAreasData();
-  res.render("areas", {
+  res.render("wiki-data", {
     title: "Areas",
     heading: "Areas of Plants vs. Zombies",
+    baseUrl: areasAPIURL,
     data: areasData,
   });
 });

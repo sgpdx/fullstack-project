@@ -35,16 +35,19 @@ h2 {
   color: #000 !important;
 }
 
-.navbar-brand:hover {
-  font-weight: bold !important;
-}
-
 .navbar-light .nav-link {
   color: #000 !important;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    color 150ms ease;
 }
 
 .navbar-light .nav-link:hover {
-  font-weight: bold !important;
+  background-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08) inset;
 }
 
 .footer {
@@ -101,4 +104,15 @@ h2 {
 
 .item5 {
   background-color: #f69294;
+}
+
+/* Back-to-list link styling: blue and underlined */
+.back-link {
+  color: #007bff;
+  text-decoration: underline;
+  display: inline-block;
+  margin: 0.5rem 0;
+}
+.back-link:hover {
+  color: #0056b3;
 }
