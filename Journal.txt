@@ -50,11 +50,12 @@ to refactor those into two separate templates
 - Made sure there was a "back to list" link to get back to the list page
 - Having some issues with the Areas data not loading, and debuggin it, GitHub Copilot found it was getting a 
 '404' response, which is really strange considering I can go type in that page directly and see data.  
+- I added images to each details page (using the URL supplied in the API response)
+- I added a search bar for each type of API data and an eventhander that checks if that data exists before 
+navigating to that page and giving a "not found" message if that data is not available
+- Troubleshooted the navbar code as it did not collapse properly; the hamburger menu didn't do anything when clicked.
+Turns out there were some dependencies that needed to go with it that are tacked on at the end of the footer code. 
 
 * TO DO ITEMS*
 - Troubleshoot the areas 404 issue or just remove it from the Wiki if I can't figure it out
-- Try to incorporate some React code to make the loading of the Wiki page from the list of items 
-to the details for a particular item be a bit more of a smoother transition
-- In my project outline I also said I'd have a search bar, instead of just manually scanning the list
-of items, so I need to implement that as well
-- Still haven't started on the "Battle" page, but I want my Wiki looking nice and functional first
+- Start on the "Battle" page using some React code
