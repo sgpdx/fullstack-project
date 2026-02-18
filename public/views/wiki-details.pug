@@ -14,11 +14,14 @@ html(lang="en")
       if detailData
         .detail
           if detailData && typeof detailData === 'object' && !Array.isArray(detailData)
+            if detailData.image
+              img(src='https://pvz-2-api.vercel.app' + detailData.image alt=title style="max-width: 100%; margin-bottom: 1rem;")
             ul
               each val, key in detailData
-                li
-                  strong #{key}: 
-                  |  #{val}
+                if key !== 'image'
+                  li
+                    strong #{key}: 
+                    |  #{val}
           else if Array.isArray(detailData)
             ul
               each val in detailData
