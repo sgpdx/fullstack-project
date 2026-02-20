@@ -85,3 +85,21 @@ Turns out there were some dependencies that needed to go with it that are tacked
 * TO DO ITEMS*
 - Troubleshoot the areas 404 issue or just remove it from the Wiki if I can't figure it out
 - Start on the "Battle" page using some React code
+
+Friday February 20, 2026
+- Reviewed final project requirements again, and saw that we need to contribute 1000+ lines of code;
+asked GitHub copilot to count up my .css, .pug, and .js files, and it came up with 534 lines. Halfway there!
+- Noticed that for Zombies the description is duplicated. However, that's coming directly from the API, 
+so it's not a code error.
+- In my Powerpoint presentation I suggested that on the wiki page, in addition to being able to search manually 
+(by clicking a link), or use a search bar to type in, I proposed using a drop down menu to select via some attribute.
+However I noticed the only attribute in common between zombies and plants is 'toughness' which is what I plan to use 
+for the battle site.  I realize I could make it dynamic, what to search for ("family" for plants or "stamina" for zombies)
+but in the interest of time, I'm going to focus on the battle portion and interactivity there, as well as the test suite
+(aka the final project requirements) and so skip this.
+- I troubleshooted the Areas 404 issue some more. The main API "https://pvz-2-api.vercel.app/api/areas" works fine, 
+but when you search for a particular item from there, ex.: "https://pvz-2-api.vercel.app/api/areas/lost%20city" the
+data is not showing up on my site.  So, I opened devtools and inspected the network and sure enough, despite the fact 
+that it returns data {name	"Lost City",levels	32, difficulty	3, image	"/assets/areas/Lost City.png"}, 
+it's showing a 404 status code.  I'm guessing this is an issue with the API itself.  So, I just gave a statement to go
+with my "no data" error handling: "The API is broken for area details. Sorry"
