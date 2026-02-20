@@ -1,8 +1,34 @@
 Journal for Full Stack Final Project
 Serena Glick / sglick@pdx.edu / sgpdx (GitHub)
 
-Early Feb, 2026
-- Saved a copy of my web dev project in a different repo, so I could overwrite this one
+Early Jan
+— Decided to do the “use a 3rd party API” option for the project.  Decided to work alone, with the instructor’s permission, 
+after our Zoom Check in call where she said it was fine for an async course.
+
+Mid Jan
+— Decided on the Plants Vs. Zombies API, since my kids are really into that game
+
+Saturday and Sunday January 24-25, 2026
+— Started Project Proposal Powerpoint Slides, all but the wireframes
+
+Saturday January 31, 2026
+— Finished PPT slides with the wireframes created using https://wireframe.cc/
+
+Sunday February 1, 2026
+—Recorded the video going through the PPT and turned in the PDF of the PPT and link to the video 
+(uploaded to my pdx email associated YouTube channel)
+
+—Shareable link:
+https://youtu.be/TXYsFhW_8Y8
+
+— Just realized I’d need to deploy over my old project site to be able to easily host my project.  
+I have a few options then: 1) use a different github account, 2) deploy over the Web Dev site, or 
+3) keep the web dev site and link to it from the main page (discretely in a footer).  
+However, this may cause some issues with .css files down the road.  Need to think on it, but may be best to 
+just save a local copy of my Web Dev project and deploy over it with the Full Stack project in order to use the github.io site to publish.
+
+Wednesday February 4, 2026
+- Saved a copy of my web dev project in a different repo, so I could overwrite this one (github.io)
 
 Sunday February 8, 2026
 - Deleted unneeded files and added new files using HW 3 as a base for code to start with 
