@@ -117,3 +117,8 @@ h2 {
 .back-link:hover {
   color: #0056b3;
 }
+
+#searchMessage {
+  color: red;
+  display: none;
+}

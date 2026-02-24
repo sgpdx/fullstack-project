@@ -15,7 +15,7 @@ html(lang="en")
     form.search-wrapper(action="/" + title.toLowerCase() method="GET" id="searchForm")
       input(type="text" name="item" placeholder="I'm looking for..." aria-label="Search for something specific" id="searchInput")
       button(type="submit") Search
-      p#searchMessage(style="color: red; display: none;") Not found
+      p#searchMessage Not found
 
     body.container
     section.text List of #{title}:
@@ -37,6 +37,12 @@ html(lang="en")
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
     const searchMessage = document.getElementById('searchMessage');
+
+    searchForm.addEventListener('input', (e) => {
+      if (searchInput.value.length > 0) {
+        searchMessage.style.display = 'none';
+      }
+    });
 
     searchForm.addEventListener('submit', (e) => {
       const searchTerm = searchInput.value.trim().toLowerCase();

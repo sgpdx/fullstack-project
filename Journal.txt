@@ -103,3 +103,8 @@ data is not showing up on my site.  So, I opened devtools and inspected the netw
 that it returns data {name	"Lost City",levels	32, difficulty	3, image	"/assets/areas/Lost City.png"}, 
 it's showing a 404 status code.  I'm guessing this is an issue with the API itself.  So, I just gave a statement to go
 with my "no data" error handling: "The API is broken for area details. Sorry"
+
+Monday February 23, 2026
+- Addressed some of the code issues that come up from my reviewer, such as errors being too verbose, and old file remaining
+(deleted) from when I was deploying to github.io, and updated the Readme to explain how to run my code
+- Small stylistic changes
