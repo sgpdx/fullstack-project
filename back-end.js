@@ -26,7 +26,7 @@ async function getPlantsData() {
     }
     return data;
   } catch (error) {
-    console.error("API error:", error);
+    console.error(error);
     return [];
   }
 }
@@ -46,7 +46,7 @@ async function getZombiesData() {
     }
     return data;
   } catch (error) {
-    console.error("API error:", error);
+    console.error(error);
     return [];
   }
 }
@@ -66,7 +66,7 @@ async function getAreasData() {
     }
     return data;
   } catch (error) {
-    console.error("API error:", error);
+    console.error(error);
     return [];
   }
 }
