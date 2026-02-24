@@ -7,5 +7,27 @@ html(lang="en")
       include includes/navbar.pug
     main.container
       h1 Battle
-      section.text This is where you're gonna pick a plant and a zombie to battle
-    include includes/footer.pug
+      section.text Pick one of each and see who wins! 
+      .battle-selects
+        .select-group
+          label(for="plant-select") Plant: 
+          select(name="plant", id="plant-select")
+            option(value="") --Please choose a plant--
+            if p_data && p_data.length > 0
+              each item in p_data
+                - var name = (item && (item.name || item.title || item.id)) || item || ''
+                if name
+                  option(value=name) #{name}
+            else
+              option(value="") No plants available
+        .select-group
+          label(for="zombie-select") Zombie: 
+          select(name="zombie", id="zombie-select")
+            option(value="") --Please choose a zombie--
+            if z_data && z_data.length > 0
+              each item in z_data
+                - var name = (item && (item.name || item.title || item.id)) || item || ''
+                if name
+                  option(value=name) #{name}
+            else
+              option(value="") No zombies available

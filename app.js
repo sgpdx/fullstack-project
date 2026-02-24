@@ -120,7 +120,14 @@ app.get("/areas", async (req, res) => {
 });
 
 app.get("/battle", async (req, res) => {
-  res.render("battle");
+  const plantsData = await getPlantsData();
+  const zombiesData = await getZombiesData();
+  res.render("battle", {
+    title: "Battle",
+    heading: "Battle Plants vs. Zombies!",
+    p_data: plantsData,
+    z_data: zombiesData,
+  });
 });
 
 app.get("/about", async (req, res) => {
