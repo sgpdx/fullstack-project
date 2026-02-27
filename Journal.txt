@@ -1,0 +1,110 @@
+Journal for Full Stack Final Project
+Serena Glick / sglick@pdx.edu / sgpdx (GitHub)
+
+Early Jan
+— Decided to do the “use a 3rd party API” option for the project.  Decided to work alone, with the instructor’s permission, 
+after our Zoom Check in call where she said it was fine for an async course.
+
+Mid Jan
+— Decided on the Plants Vs. Zombies API, since my kids are really into that game
+
+Saturday and Sunday January 24-25, 2026
+— Started Project Proposal Powerpoint Slides, all but the wireframes
+
+Saturday January 31, 2026
+— Finished PPT slides with the wireframes created using https://wireframe.cc/
+
+Sunday February 1, 2026
+—Recorded the video going through the PPT and turned in the PDF of the PPT and link to the video 
+(uploaded to my pdx email associated YouTube channel)
+
+—Shareable link:
+https://youtu.be/TXYsFhW_8Y8
+
+— Just realized I’d need to deploy over my old project site to be able to easily host my project.  
+I have a few options then: 1) use a different github account, 2) deploy over the Web Dev site, or 
+3) keep the web dev site and link to it from the main page (discretely in a footer).  
+However, this may cause some issues with .css files down the road.  Need to think on it, but may be best to 
+just save a local copy of my Web Dev project and deploy over it with the Full Stack project in order to use the github.io site to publish.
+
+Wednesday February 4, 2026
+- Saved a copy of my web dev project in a different repo, so I could overwrite this one (github.io)
+
+Sunday February 8, 2026
+- Deleted unneeded files and added new files using HW 3 as a base for code to start with 
+(using Pug, Express.js)
+- Using GitHub Copilot, figured out how to convert this code into one that can run via github.io,
+since we aren't using "node app.js" to run it anymore, like we did in HW3.
+It suggested a build.js file, and then I need to run "npm run build" 
+to create the html pages based on the pug templates
+
+Saturday February 14, 2026
+- Set up all the pages with their pug templates and a basic outline for the page with
+headings, placeholder flex or text boxes, etc.  Ran "npm run build" to set up the .html
+- Testing the site constantly with nodemon
+- Starting to play around with styles to make the Navbar Green to be on the 'plants' theme
+- Next steps, I need to figure out how to bring in the API Data dynamically
+
+Sunday Feburary 15, 2025
+- Went back over the requirements for the project and realized that I don't actually have to use a database!
+I remember the professor saying we needed to create an API and a Database during our Zoom Check-in call, 
+but looking back over the instructions, that's option 1: 
+"Build a front-end, back-end, and an API, implementing calls to create, update, and delete items from a database"
+I specifically chose option 2 which is just using an API: 
+"Build a front-end and a back-end, and use a third-party API on the back-end"
+So, that's a relief.  I need to focus more on my back-end and calling the API next.
+- A classmate for HW3 suggested caching the API data, which is a great idea, so I added that here
+just like how I updated my code in HW 3 (check for cached data before calling the API)
+- Removed tracking of the "node_modules" folder from github and added to .gitignore
+- Removed all traces of HW3 API data, replaced it with PVZ API Data
+- More styling on the flexboxes for the wiki & home page
+
+Monday February 16, 2026
+- Working on trying to get the API data in but realzing that I can't use Express in the same way
+as I used it for HW 3, because "GitHub Pages doesn't support running backend servers at all. It only serves static files."
+So I need to run "npm build" each time which doesn't play well with Express!  Goihg to email the professor to confirm.
+
+Wednesday February 18, 2026
+- Got the email from the professor that we're deploying to Vercel, not github pages, so I made a new repo for the project
+code called "fullstack-project" and that way all my previous merges will show as new code for the PR review that we will 
+be doing for discussion 5, so just as well!
+- Set up the Wiki Links to display the details for the item clicked on
+- Added a "back to Wiki" button link for easier navigation
+- Originally had initial data (unordered list of items to click on) and its details (also an unordered
+list, but with bold "key" and regular text "value" pairs listed out) but then had GitHub Copilot help me 
+to refactor those into two separate templates
+- Made sure there was a "back to list" link to get back to the list page
+- Having some issues with the Areas data not loading, and debuggin it, GitHub Copilot found it was getting a 
+'404' response, which is really strange considering I can go type in that page directly and see data.  
+- I added images to each details page (using the URL supplied in the API response)
+- I added a search bar for each type of API data and an eventhander that checks if that data exists before 
+navigating to that page and giving a "not found" message if that data is not available
+- Troubleshooted the navbar code as it did not collapse properly; the hamburger menu didn't do anything when clicked.
+Turns out there were some dependencies that needed to go with it that are tacked on at the end of the footer code. 
+
+* TO DO ITEMS*
+- Troubleshoot the areas 404 issue or just remove it from the Wiki if I can't figure it out
+- Start on the "Battle" page using some React code
+
+Friday February 20, 2026
+- Reviewed final project requirements again, and saw that we need to contribute 1000+ lines of code;
+asked GitHub copilot to count up my .css, .pug, and .js files, and it came up with 534 lines. Halfway there!
+- Noticed that for Zombies the description is duplicated. However, that's coming directly from the API, 
+so it's not a code error.
+- In my Powerpoint presentation I suggested that on the wiki page, in addition to being able to search manually 
+(by clicking a link), or use a search bar to type in, I proposed using a drop down menu to select via some attribute.
+However I noticed the only attribute in common between zombies and plants is 'toughness' which is what I plan to use 
+for the battle site.  I realize I could make it dynamic, what to search for ("family" for plants or "stamina" for zombies)
+but in the interest of time, I'm going to focus on the battle portion and interactivity there, as well as the test suite
+(aka the final project requirements) and so skip this.
+- I troubleshooted the Areas 404 issue some more. The main API "https://pvz-2-api.vercel.app/api/areas" works fine, 
+but when you search for a particular item from there, ex.: "https://pvz-2-api.vercel.app/api/areas/lost%20city" the
+data is not showing up on my site.  So, I opened devtools and inspected the network and sure enough, despite the fact 
+that it returns data {name	"Lost City",levels	32, difficulty	3, image	"/assets/areas/Lost City.png"}, 
+it's showing a 404 status code.  I'm guessing this is an issue with the API itself.  So, I just gave a statement to go
+with my "no data" error handling: "The API is broken for area details. Sorry"
+
+Monday February 23, 2026
+- Addressed some of the code issues that come up from my reviewer, such as errors being too verbose, and old file remaining
+(deleted) from when I was deploying to github.io, and updated the Readme to explain how to run my code
+- Small stylistic changes

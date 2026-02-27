@@ -1,0 +1,35 @@
+//- Details page for a single wiki item
+//- I had GitHub Copilot Help me refactor my original "wiki-data.pug" template
+//- into two templates for easier readability and maintainability. The "wiki-data.pug" template is now only for listing items, and the "wiki-details.pug" template is for showing details of a single item.
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      h1 #{title} Details
+      section.text #{heading}
+      a.back-link(href=(typeof listPath !== 'undefined' ? listPath : '/')) Back to list
+      if detailData
+        .detail
+          if detailData && typeof detailData === 'object' && !Array.isArray(detailData)
+            if detailData.image
+              img(src='https://pvz-2-api.vercel.app' + detailData.image alt=title style="max-width: 100%; margin-bottom: 1rem;")
+            ul
+              each val, key in detailData
+                if key !== 'image'
+                  li
+                    strong #{key}: 
+                    |  #{val}
+          else if Array.isArray(detailData)
+            ul
+              each val in detailData
+                li #{val}
+          else
+            p #{detailData}
+      else
+        p No data available.  
+        p 
+        strong The API is broken for area details.  Sorry!
+    include includes/footer.pug
