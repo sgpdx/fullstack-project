@@ -113,6 +113,48 @@ function BattlePage() {
     }
   };
 
+  const handleRandomPlant = async () => {
+    if (!plantsData.length) return;
+    const name = plantsData[Math.floor(Math.random() * plantsData.length)];
+    setSelectedPlant(name);
+    setLoadingPlant(true);
+    try {
+      const response = await fetch(
+        "/battle/plant-detail?name=" + encodeURIComponent(name),
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setPlantDetails(data);
+      }
+    } catch (error) {
+      console.error("Error fetching random plant details:", error);
+      setPlantDetails(null);
+    } finally {
+      setLoadingPlant(false);
+    }
+  };
+
+  const handleRandomZombie = async () => {
+    if (!zombiesData.length) return;
+    const name = zombiesData[Math.floor(Math.random() * zombiesData.length)];
+    setSelectedZombie(name);
+    setLoadingZombie(true);
+    try {
+      const response = await fetch(
+        "/battle/zombie-detail?name=" + encodeURIComponent(name),
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setZombieDetails(data);
+      }
+    } catch (error) {
+      console.error("Error fetching random zombie details:", error);
+      setZombieDetails(null);
+    } finally {
+      setLoadingZombie(false);
+    }
+  };
+
   return React.createElement(
     "div",
     { className: "battle-container" },
@@ -145,6 +187,11 @@ function BattlePage() {
                 "No plants available",
               ),
         ),
+        React.createElement(
+          "button",
+          { className: "random-btn", onClick: handleRandomPlant },
+          "Random Plant",
+        ),
       ),
       React.createElement(
         "div",
@@ -171,6 +218,11 @@ function BattlePage() {
                 { value: "" },
                 "No zombies available",
               ),
+        ),
+        React.createElement(
+          "button",
+          { className: "random-btn", onClick: handleRandomZombie },
+          "Random Zombie",
         ),
       ),
     ),

@@ -121,3 +121,5 @@ want it to look and function.  I will also modify the styling and try to make it
 - I'm finding this API is pretty inconsisent.  Sometimes it's "Toughness" and sometimes "toughness".  
 Some plants don't have a "toughness" battle at all, and while most have string values ("avergae") some
 have a numerical value like "300" or "40" and I need to know how to handle these cases.
+- Added "random plant/zombie" button so the user can just randomly select one of each
+- Had AI count up the number of lines; currently at 961 between my .css, .pug, and .js files!
