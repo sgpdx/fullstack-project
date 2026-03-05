@@ -119,6 +119,30 @@ app.get("/areas", async (req, res) => {
   });
 });
 
+app.get("/battle/plant-detail", async (req, res) => {
+  const name = req.query.name;
+  if (!name) return res.status(400).json({ error: "name required" });
+  try {
+    const response = await fetch(plantsAPIURL + "/" + encodeURIComponent(name));
+    const data = response.ok ? await response.json() : null;
+    res.json(data);
+  } catch (err) {
+    res.status(500).json(null);
+  }
+});
+
+app.get("/battle/zombie-detail", async (req, res) => {
+  const name = req.query.name;
+  if (!name) return res.status(400).json({ error: "name required" });
+  try {
+    const response = await fetch(zombiesAPIURL + "/" + encodeURIComponent(name));
+    const data = response.ok ? await response.json() : null;
+    res.json(data);
+  } catch (err) {
+    res.status(500).json(null);
+  }
+});
+
 app.get("/battle", async (req, res) => {
   const plantsData = await getPlantsData();
   const zombiesData = await getZombiesData();

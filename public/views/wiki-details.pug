@@ -15,7 +15,7 @@ html(lang="en")
         .detail
           if detailData && typeof detailData === 'object' && !Array.isArray(detailData)
             if detailData.image
-              img(src='https://pvz-2-api.vercel.app' + detailData.image alt=title style="max-width: 100%; margin-bottom: 1rem;")
+              img(src='https://pvz-2-api.vercel.app' + detailData.image alt=title)
             ul
               each val, key in detailData
                 if key !== 'image'
