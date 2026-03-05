@@ -1,0 +1,53 @@
+All unique toughness values found across the PVZ2 API (plants + zombies)
+========================================================================
+
+--- Word-based toughness values (used by most plants and zombies) ---
+Fragile
+Normal  / normal
+Average / average
+Typical
+Solid   / solid
+Dense   / dense
+Hardened / hardened
+Protected
+Great
+Elevated
+Machined
+Undying
+
+Note: The API is inconsistent with casing — some entries use "Normal", others "average", "hardened" etc.
+All comparisons should be case-insensitive.
+
+--- Numeric / damage-based values (found on some plants, appear to be attack damage not durability) ---
+40
+300
+300 DPS
+300 damage per shot
+300 damage per shot (columns 1-3)
+900 damage per shot (columns 4-6)
+1500 damage per shot (columns 7-9)
+600 damage per shot
+900 damage per shot
+1200 damage per shot
+1500 damage per shot
+2500 damage per shot
+3000
+3000 damage per shot
+3000 dps
+4000 damage per shot
+8000
+
+Note: These numeric values appear on plants that store their attack damage
+in the "Toughness" field rather than actual durability/survivability.
+For the battle comparison, these should be treated as their own category.
+
+--- Suggested numeric ranking for battle comparison (word-based only) ---
+1 = Fragile
+2 = Normal / average / typical   (treated as equivalent)
+3 = Solid / dense                (treated as equivalent)
+4 = Hardened
+5 = Protected
+6 = Great
+7 = Elevated
+8 = Machined
+9 = Undying
