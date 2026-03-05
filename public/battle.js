@@ -6,6 +6,35 @@ const zombiesData = JSON.parse(
   document.getElementById("zombies-data").textContent || "[]",
 );
 
+function getToughnessRank(toughness) {
+  if (!toughness) return 0;
+  switch (toughness.toLowerCase()) {
+    case "fragile":
+      return 1;
+    case "normal":
+    case "average":
+    case "typical":
+      return 2;
+    case "solid":
+    case "dense":
+      return 3;
+    case "hardened":
+      return 4;
+    case "protected":
+      return 5;
+    case "great":
+      return 6;
+    case "elevated":
+      return 7;
+    case "machined":
+      return 8;
+    case "undying":
+      return 9;
+    default:
+      return 0;
+  }
+}
+
 function BattlePage() {
   const [selectedPlant, setSelectedPlant] = React.useState("");
   const [selectedZombie, setSelectedZombie] = React.useState("");
@@ -13,6 +42,26 @@ function BattlePage() {
   const [zombieDetails, setZombieDetails] = React.useState(null);
   const [loadingPlant, setLoadingPlant] = React.useState(false);
   const [loadingZombie, setLoadingZombie] = React.useState(false);
+
+  const handleBattle = () => {
+    if (!plantDetails || !zombieDetails) {
+      alert("Please select both a plant and a zombie first!");
+      return;
+    }
+    const plantToughness =
+      plantDetails.Toughness || plantDetails.toughness || "";
+    const zombieToughness =
+      zombieDetails.Toughness || zombieDetails.toughness || "";
+    const plantRank = getToughnessRank(plantToughness);
+    const zombieRank = getToughnessRank(zombieToughness);
+    if (plantRank > zombieRank) {
+      alert(selectedPlant + " wins!");
+    } else if (zombieRank > plantRank) {
+      alert(selectedZombie + " wins!");
+    } else {
+      alert("Tie!");
+    }
+  };
 
   const handlePlantChange = async (event) => {
     const plantName = event.target.value;
@@ -125,68 +174,76 @@ function BattlePage() {
         ),
       ),
     ),
-    selectedPlant &&
+    React.createElement(
+      "div",
+      { className: "battle-arena" },
       React.createElement(
         "div",
-        { className: "plant-details" },
-        React.createElement("h2", null, "Selected Plant: " + selectedPlant),
+        { className: "battle-card" },
+        React.createElement("h2", null, selectedPlant || "Choose a plant"),
         loadingPlant
-          ? React.createElement("p", null, "Loading plant details...")
+          ? React.createElement("p", null, "Loading...")
           : plantDetails
             ? React.createElement(
-                "div",
-                { className: "details-card" },
+                React.Fragment,
+                null,
                 plantDetails.image &&
                   React.createElement("img", {
                     src: "https://pvz-2-api.vercel.app" + plantDetails.image,
                     alt: selectedPlant,
+                    className: "battle-card-img",
                   }),
                 React.createElement(
-                  "div",
-                  { className: "stats" },
-                  React.createElement(
-                    "p",
-                    null,
-                    React.createElement("strong", null, "Toughness: "),
-                    plantDetails.Toughness ||
-                      plantDetails.toughness ||
-                      "unknown",
-                  ),
+                  "p",
+                  null,
+                  React.createElement("strong", null, "Toughness: "),
+                  plantDetails.Toughness || plantDetails.toughness || "unknown",
                 ),
               )
-            : React.createElement("p", null, "Failed to load plant details"),
+            : React.createElement(
+                "p",
+                { className: "placeholder-text" },
+                "Select a plant above",
+              ),
       ),
-    selectedZombie &&
+      React.createElement("div", { className: "battle-vs" }, "VS"),
       React.createElement(
         "div",
-        { className: "zombie-details" },
-        React.createElement("h2", null, "Selected Zombie: " + selectedZombie),
+        { className: "battle-card" },
+        React.createElement("h2", null, selectedZombie || "Choose a zombie"),
         loadingZombie
-          ? React.createElement("p", null, "Loading zombie details...")
+          ? React.createElement("p", null, "Loading...")
           : zombieDetails
             ? React.createElement(
-                "div",
-                { className: "details-card" },
+                React.Fragment,
+                null,
                 zombieDetails.image &&
                   React.createElement("img", {
                     src: "https://pvz-2-api.vercel.app" + zombieDetails.image,
                     alt: selectedZombie,
+                    className: "battle-card-img",
                   }),
                 React.createElement(
-                  "div",
-                  { className: "stats" },
-                  React.createElement(
-                    "p",
-                    null,
-                    React.createElement("strong", null, "Toughness: "),
-                    zombieDetails.Toughness ||
-                      zombieDetails.toughness ||
-                      "unknown",
-                  ),
+                  "p",
+                  null,
+                  React.createElement("strong", null, "Toughness: "),
+                  zombieDetails.Toughness ||
+                    zombieDetails.toughness ||
+                    "unknown",
                 ),
               )
-            : React.createElement("p", null, "Failed to load zombie details"),
+            : React.createElement(
+                "p",
+                { className: "placeholder-text" },
+                "Select a zombie above",
+              ),
       ),
+    ),
+    React.createElement(
+      "button",
+      { className: "battle-btn", onClick: handleBattle },
+      "Battle!",
+    ),
   );
 }
 

@@ -115,3 +115,9 @@ any instructional resources on front-end client interactivity, beyond the PDF fi
 Therefore I am going to be relying heavily on GitHub Copilot here to help me add the React interactvity.  Rest assured, I am going to
 carefully read through the code and make sure I understand it, and work with the agent to get the results I have in my mind for how I
 want it to look and function.  I will also modify the styling and try to make it look nice on my own.
+- Got nice boxes set up with the image of the plant & zombie side by side
+- Got a list of the differnet "tougness"es available and the AI suggested a numeric value for each
+- Added the "battle" button that will compare their numeric values and see who is the winner
+- I'm finding this API is pretty inconsisent.  Sometimes it's "Toughness" and sometimes "toughness".  
+Some plants don't have a "toughness" battle at all, and while most have string values ("avergae") some
+have a numerical value like "300" or "40" and I need to know how to handle these cases.
