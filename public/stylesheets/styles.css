@@ -62,12 +62,17 @@ h2 {
   margin: 1em;
 }
 
+.side-image {
+  max-width: 200px;
+  align-self: center;
+}
+
 .flexbox-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 20px;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border-radius: 8px;
   max-width: 400px;
@@ -77,10 +82,19 @@ h2 {
   .flexbox-container {
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .flexbox-container > div {
     flex: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flexbox-container {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    width: 100%;
   }
 }
 .item {
