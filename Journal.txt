@@ -127,3 +127,4 @@ have a numerical value like "300" or "40" and I need to know how to handle these
 Friday March 6, 2026
 - Front page styling with the flex boxes; added an image and made sure the "Wiki" and "Battle" boxes wrap 
 around correctly at different screen sizes
+- Added an image and styled the main wiki page

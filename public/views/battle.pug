@@ -8,6 +8,9 @@ html(lang="en")
     main.container
       h1 Battle
       section.text Pick one of each and see who wins!
+      .top-image-container
+        img.top-image(src="/images/simple-pea.jpg" alt="Simple Pea Shooter")
+        img.top-image(src="/images/plants-vs-zombies-free-full-version-2.jpg" alt="Zombie with yellow background")
       #battle-root
     script(type='application/json' id='plants-data') !{JSON.stringify(p_data || [])}
     script(type='application/json' id='zombies-data') !{JSON.stringify(z_data || [])}
