@@ -9,6 +9,7 @@ const {
   getPlantsData,
   getZombiesData,
   getAreasData,
+  getPlantFamilies,
   plantsAPIURL,
   zombiesAPIURL,
   areasAPIURL,
@@ -51,11 +52,13 @@ app.get("/plants", async (req, res) => {
     }
   }
   const plantsData = await getPlantsData();
+  const plantFamilies = await getPlantFamilies();
   res.render("wiki-data", {
     title: "Plants",
     heading: "Plants of Plants vs. Zombies",
     baseUrl: plantsAPIURL,
     data: plantsData,
+    plantFamilies,
   });
 });
 
@@ -96,7 +99,9 @@ app.get("/areas", async (req, res) => {
       const response = await fetch(
         areasAPIURL + "/" + encodeURIComponent(item),
       );
-      const detail = response.ok ? await response.json() : null;
+      // The areas API returns 404 even when it has valid data, so we always
+      // attempt to parse the JSON body regardless of status code.
+      const detail = await response.json().catch(() => null);
       return res.render("wiki-details", {
         title: "Areas",
         heading: `Details for ${item}`,
@@ -135,7 +140,9 @@ app.get("/battle/zombie-detail", async (req, res) => {
   const name = req.query.name;
   if (!name) return res.status(400).json({ error: "name required" });
   try {
-    const response = await fetch(zombiesAPIURL + "/" + encodeURIComponent(name));
+    const response = await fetch(
+      zombiesAPIURL + "/" + encodeURIComponent(name),
+    );
     const data = response.ok ? await response.json() : null;
     res.json(data);
   } catch (err) {

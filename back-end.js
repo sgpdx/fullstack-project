@@ -5,6 +5,7 @@ const rawCache = {
   plants: null,
   zombies: null,
   areas: null,
+  plantFamilies: null,
 };
 
 const plantsAPIURL = "https://pvz-2-api.vercel.app/api/plants";
@@ -71,10 +72,50 @@ async function getAreasData() {
   }
 }
 
+// Returns { "FamilyName": ["PlantA", "PlantB", ...], ... }
+async function getPlantFamilies() {
+  if (rawCache.plantFamilies) return rawCache.plantFamilies;
+
+  try {
+    const names = await getPlantsData();
+    // Fetch all plant details in parallel
+    const details = await Promise.all(
+      names.map(async (name) => {
+        try {
+          const res = await fetch(
+            plantsAPIURL + "/" + encodeURIComponent(name),
+          );
+          return res.ok ? await res.json() : null;
+        } catch {
+          return null;
+        }
+      }),
+    );
+
+    const families = {};
+    for (const plant of details) {
+      if (!plant || !plant.family || !plant.name) continue;
+      if (!families[plant.family]) families[plant.family] = [];
+      families[plant.family].push(plant.name);
+    }
+    // Sort family names and plants within each family
+    const sorted = {};
+    for (const fam of Object.keys(families).sort()) {
+      sorted[fam] = families[fam].sort();
+    }
+    rawCache.plantFamilies = sorted;
+    return sorted;
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+}
+
 module.exports = {
   getPlantsData,
   getZombiesData,
   getAreasData,
+  getPlantFamilies,
   plantsAPIURL,
   zombiesAPIURL,
   areasAPIURL,

@@ -21,6 +21,19 @@ h2 {
 .container {
   margin-top: 3rem;
   padding-block: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+}
+
+#plant-family,
+#plant-select,
+#zombie-select {
+  padding: 0.4rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--purple);
+  border-radius: 6px;
 }
 
 .text {
@@ -62,30 +75,65 @@ h2 {
   margin: 1em;
 }
 
-.flexbox-container {
+.side-image {
+  max-width: 200px;
+  align-self: center;
+}
+
+.top-image-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 20px;
+}
 
-  /* Visual styling for the container */
+.top-image {
+  max-height: 100px;
+  width: auto;
+}
+
+.flexbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
   width: 80%;
-  max-width: 600px;
-  padding: 0;
+  padding: 10px;
   border-radius: 8px;
+  max-width: 400px;
+}
+
+@media (min-width: 768px) {
+  .flexbox-container {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .flexbox-container > div {
+    flex: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flexbox-container {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 .item {
   text-decoration: none;
   font-size: 2em;
   color: #333;
   font-weight: bold;
-  flex: 1;
-  min-width: 160px;
+  width: 100%;
   text-align: center;
   padding: 20px;
   border: 5px solid #333;
+  box-sizing: border-box;
+  min-width: 200px;
 }
 
 .item1 {
@@ -108,7 +156,6 @@ h2 {
   background-color: #f69294;
 }
 
-/* Back-to-list link styling: blue and underlined */
 .back-link {
   color: #007bff;
   text-decoration: underline;
@@ -122,6 +169,11 @@ h2 {
 .detail {
   max-width: 100%;
   margin-bottom: 1rem;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #searchMessage {
@@ -169,6 +221,7 @@ h2 {
   max-width: 260px;
   text-align: center;
   flex: 1;
+  background-color: var(--yellow);
 }
 
 .battle-card h2 {
@@ -202,7 +255,7 @@ h2 {
   padding: 0.75rem 2.5rem;
   font-size: 1.25rem;
   font-weight: bold;
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--purple);
   border: 3px solid var(--purple);
   border-radius: 8px;
@@ -212,7 +265,7 @@ h2 {
 
 .battle-btn:hover {
   background-color: var(--purple);
-  color: var(--green);
+  color: var(--orange);
 }
 
 .random-btn {
@@ -230,4 +283,97 @@ h2 {
 .random-btn:hover {
   background-color: var(--purple);
   color: #fff;
+}
+
+/* Battle animation overlay */
+@keyframes battle-rock {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  12% {
+    transform: scale(1.15) rotate(-14deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(14deg);
+  }
+  37% {
+    transform: scale(1.15) rotate(-11deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(11deg);
+  }
+  62% {
+    transform: scale(1.1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(7deg);
+  }
+  87% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.battle-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  z-index: 1000;
+}
+
+.battle-overlay-vs {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--orange);
+  text-shadow: 2px 2px 6px #000;
+}
+
+.battle-overlay-img {
+  width: 200px;
+  height: auto;
+  animation: battle-rock 2.2s ease-in-out;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.6));
+}
+
+/* Flip the zombie image so it faces the plant */
+.battle-overlay-img--flip {
+  transform-origin: bottom center;
+  animation: battle-rock-flip 2.2s ease-in-out;
+}
+
+@keyframes battle-rock-flip {
+  0% {
+    transform: scale(1) scaleX(-1) rotate(0deg);
+  }
+  12% {
+    transform: scale(1.15) scaleX(-1) rotate(-14deg);
+  }
+  25% {
+    transform: scale(1.15) scaleX(-1) rotate(14deg);
+  }
+  37% {
+    transform: scale(1.15) scaleX(-1) rotate(-11deg);
+  }
+  50% {
+    transform: scale(1.15) scaleX(-1) rotate(11deg);
+  }
+  62% {
+    transform: scale(1.1) scaleX(-1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.1) scaleX(-1) rotate(7deg);
+  }
+  87% {
+    transform: scale(1.05) scaleX(-1) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) scaleX(-1) rotate(0deg);
+  }
 }

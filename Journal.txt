@@ -123,3 +123,20 @@ Some plants don't have a "toughness" battle at all, and while most have string v
 have a numerical value like "300" or "40" and I need to know how to handle these cases.
 - Added "random plant/zombie" button so the user can just randomly select one of each
 - Had AI count up the number of lines; currently at 961 between my .css, .pug, and .js files!
+
+Friday March 6, 2026
+- Front page styling with the flex boxes; added an image and made sure the "Wiki" and "Battle" boxes wrap 
+around correctly at different screen sizes
+- Added an image and styled the main wiki page
+
+Sunday March 8, 2026
+- Added a photo of my kids playing cell games on the "About" page
+- Added a dropdown menu for Plants to select via Family, which required calling the API just for family names
+and caching those, to be more efficient with the API call
+- Some extra CSS Styling of the search bar and drop downs
+- Fixed the Areas API problem by not checking for a valid status code before displaying data, since there's an
+issue with the API always returning a '404' despite having data.  
+- Handled the remaining # values with case statements, for the battle.  Sadly, some do not have a toughness listed,
+so for those it will say "unknown" and default to 0, and always lose. 
+- Added visualization of the plant and zombie selected to rock back and forth when pressing the battle button, then 
+saw a message (Congratulations if the plant wins, Aww too bad if the Zombie wins), and the name of who wins.
