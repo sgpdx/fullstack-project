@@ -8,25 +8,42 @@ const zombiesData = JSON.parse(
 
 function getToughnessRank(toughness) {
   if (!toughness) return 0;
-  switch (toughness.toLowerCase()) {
+  switch (String(toughness).toLowerCase()) {
     case "fragile":
+    case "40":
       return 1;
+    case "300":
+    case "300 DPS":
+    case "300 damage per shot":
+    case "300 damage per shot (columns 1-3)":
     case "normal":
     case "average":
     case "typical":
       return 2;
     case "solid":
     case "dense":
+    case "600 damage per shot":
       return 3;
     case "hardened":
+    case "900 damage per shot":
+    case "900 damage per shot (columns 4-6)":
       return 4;
     case "protected":
+    case "1200 damage per shot":
+    case "1500 damage per shot":
+    case "1500 damage per shot (columns 7-9)":
       return 5;
     case "great":
+    case "2500 damage per shot":
+    case "3000":
+    case "3000 damage per shot":
+    case "3000 dps":
       return 6;
     case "elevated":
+    case "4000 damage per shot":
       return 7;
     case "machined":
+    case "8000":
       return 8;
     case "undying":
       return 9;
@@ -42,25 +59,40 @@ function BattlePage() {
   const [zombieDetails, setZombieDetails] = React.useState(null);
   const [loadingPlant, setLoadingPlant] = React.useState(false);
   const [loadingZombie, setLoadingZombie] = React.useState(false);
+  const [isBattling, setIsBattling] = React.useState(false);
 
   const handleBattle = () => {
     if (!plantDetails || !zombieDetails) {
       alert("Please select both a plant and a zombie first!");
       return;
     }
-    const plantToughness =
-      plantDetails.Toughness || plantDetails.toughness || "";
-    const zombieToughness =
-      zombieDetails.Toughness || zombieDetails.toughness || "";
-    const plantRank = getToughnessRank(plantToughness);
-    const zombieRank = getToughnessRank(zombieToughness);
-    if (plantRank > zombieRank) {
-      alert(selectedPlant + " wins!");
-    } else if (zombieRank > plantRank) {
-      alert(selectedZombie + " wins!");
-    } else {
-      alert("Tie!");
-    }
+    setIsBattling(true);
+    setTimeout(() => {
+      setIsBattling(false);
+      const plantToughness =
+        plantDetails.Toughness || plantDetails.toughness || "";
+      const zombieToughness =
+        zombieDetails.Toughness || zombieDetails.toughness || "";
+      const plantRank = getToughnessRank(plantToughness);
+      const zombieRank = getToughnessRank(zombieToughness);
+      if (plantRank > zombieRank) {
+        alert(
+          "Congratulations!  " +
+            selectedPlant.charAt(0).toUpperCase() +
+            selectedPlant.slice(1).toLowerCase() +
+            " wins!",
+        );
+      } else if (zombieRank > plantRank) {
+        alert(
+          "Aww too bad...  " +
+            selectedZombie.charAt(0).toUpperCase() +
+            selectedZombie.slice(1).toLowerCase() +
+            " wins.",
+        );
+      } else {
+        alert("It's a tie!");
+      }
+    }, 2200);
   };
 
   const handlePlantChange = async (event) => {
@@ -158,6 +190,26 @@ function BattlePage() {
   return React.createElement(
     "div",
     { className: "battle-container" },
+    isBattling &&
+      React.createElement(
+        "div",
+        { className: "battle-overlay" },
+        plantDetails &&
+          plantDetails.image &&
+          React.createElement("img", {
+            className: "battle-overlay-img",
+            src: "https://pvz-2-api.vercel.app" + plantDetails.image,
+            alt: selectedPlant,
+          }),
+        React.createElement("div", { className: "battle-overlay-vs" }, "VS"),
+        zombieDetails &&
+          zombieDetails.image &&
+          React.createElement("img", {
+            className: "battle-overlay-img battle-overlay-img--flip",
+            src: "https://pvz-2-api.vercel.app" + zombieDetails.image,
+            alt: selectedZombie,
+          }),
+      ),
     React.createElement(
       "div",
       { className: "battle-selects" },

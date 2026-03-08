@@ -99,7 +99,9 @@ app.get("/areas", async (req, res) => {
       const response = await fetch(
         areasAPIURL + "/" + encodeURIComponent(item),
       );
-      const detail = response.ok ? await response.json() : null;
+      // The areas API returns 404 even when it has valid data, so we always
+      // attempt to parse the JSON body regardless of status code.
+      const detail = await response.json().catch(() => null);
       return res.render("wiki-details", {
         title: "Areas",
         heading: `Details for ${item}`,

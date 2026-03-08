@@ -134,3 +134,9 @@ Sunday March 8, 2026
 - Added a dropdown menu for Plants to select via Family, which required calling the API just for family names
 and caching those, to be more efficient with the API call
 - Some extra CSS Styling of the search bar and drop downs
+- Fixed the Areas API problem by not checking for a valid status code before displaying data, since there's an
+issue with the API always returning a '404' despite having data.  
+- Handled the remaining # values with case statements, for the battle.  Sadly, some do not have a toughness listed,
+so for those it will say "unknown" and default to 0, and always lose. 
+- Added visualization of the plant and zombie selected to rock back and forth when pressing the battle button, then 
+saw a message (Congratulations if the plant wins, Aww too bad if the Zombie wins), and the name of who wins.

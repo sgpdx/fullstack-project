@@ -26,7 +26,8 @@ h2 {
 }
 
 #plant-family,
-#plant-select {
+#plant-select,
+#zombie-select {
   padding: 0.4rem;
   margin-top: 1rem;
   margin-left: 0.5rem;
@@ -220,6 +221,7 @@ h2 {
   max-width: 260px;
   text-align: center;
   flex: 1;
+  background-color: var(--yellow);
 }
 
 .battle-card h2 {
@@ -253,7 +255,7 @@ h2 {
   padding: 0.75rem 2.5rem;
   font-size: 1.25rem;
   font-weight: bold;
-  background-color: var(--green);
+  background-color: var(--orange);
   color: var(--purple);
   border: 3px solid var(--purple);
   border-radius: 8px;
@@ -263,7 +265,7 @@ h2 {
 
 .battle-btn:hover {
   background-color: var(--purple);
-  color: var(--green);
+  color: var(--orange);
 }
 
 .random-btn {
@@ -281,4 +283,97 @@ h2 {
 .random-btn:hover {
   background-color: var(--purple);
   color: #fff;
+}
+
+/* Battle animation overlay */
+@keyframes battle-rock {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  12% {
+    transform: scale(1.15) rotate(-14deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(14deg);
+  }
+  37% {
+    transform: scale(1.15) rotate(-11deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(11deg);
+  }
+  62% {
+    transform: scale(1.1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(7deg);
+  }
+  87% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.battle-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  z-index: 1000;
+}
+
+.battle-overlay-vs {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--orange);
+  text-shadow: 2px 2px 6px #000;
+}
+
+.battle-overlay-img {
+  width: 200px;
+  height: auto;
+  animation: battle-rock 2.2s ease-in-out;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.6));
+}
+
+/* Flip the zombie image so it faces the plant */
+.battle-overlay-img--flip {
+  transform-origin: bottom center;
+  animation: battle-rock-flip 2.2s ease-in-out;
+}
+
+@keyframes battle-rock-flip {
+  0% {
+    transform: scale(1) scaleX(-1) rotate(0deg);
+  }
+  12% {
+    transform: scale(1.15) scaleX(-1) rotate(-14deg);
+  }
+  25% {
+    transform: scale(1.15) scaleX(-1) rotate(14deg);
+  }
+  37% {
+    transform: scale(1.15) scaleX(-1) rotate(-11deg);
+  }
+  50% {
+    transform: scale(1.15) scaleX(-1) rotate(11deg);
+  }
+  62% {
+    transform: scale(1.1) scaleX(-1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.1) scaleX(-1) rotate(7deg);
+  }
+  87% {
+    transform: scale(1.05) scaleX(-1) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) scaleX(-1) rotate(0deg);
+  }
 }
