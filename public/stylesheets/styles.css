@@ -21,6 +21,18 @@ h2 {
 .container {
   margin-top: 3rem;
   padding-block: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
+}
+
+#plant-family,
+#plant-select {
+  padding: 0.4rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--purple);
+  border-radius: 6px;
 }
 
 .text {
@@ -156,6 +168,11 @@ h2 {
 .detail {
   max-width: 100%;
   margin-bottom: 1rem;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #searchMessage {

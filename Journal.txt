@@ -128,3 +128,9 @@ Friday March 6, 2026
 - Front page styling with the flex boxes; added an image and made sure the "Wiki" and "Battle" boxes wrap 
 around correctly at different screen sizes
 - Added an image and styled the main wiki page
+
+Sunday March 8, 2026
+- Added a photo of my kids playing cell games on the "About" page
+- Added a dropdown menu for Plants to select via Family, which required calling the API just for family names
+and caching those, to be more efficient with the API call
+- Some extra CSS Styling of the search bar and drop downs

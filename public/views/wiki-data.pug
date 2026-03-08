@@ -12,10 +12,19 @@ html(lang="en")
       a.back-link(href=(typeof listPath !== 'undefined' ? listPath : '/wiki')) Back to Wiki
 
     searchbar.container
-    form.search-wrapper(action="/" + title.toLowerCase() method="GET" id="searchForm")
+    form.search-wrapper(action="/" + title.toLowerCase() method="GET" id="searchForm") Search by name: 
       input(type="text" name="item" placeholder="I'm looking for..." aria-label="Search for something specific" id="searchInput")
       button(type="submit") Search
       p#searchMessage Not found
+
+    dropdown.container
+      if title === 'Plants'
+        label(for='plant-family') OR Search by family:
+        select#plant-family(name='plant-family')
+          option(value='') -- Select a family --
+        label(for='plant-select' style='margin-left:1rem') Plant:
+        select#plant-select(name='plant-select' disabled)
+          option(value='') -- Select a plant --
 
     body.container
     section.text List of #{title}:
@@ -34,6 +43,7 @@ html(lang="en")
 
   script.
     const data = !{JSON.stringify(data)};
+    const plantFamilies = !{JSON.stringify(typeof plantFamilies !== 'undefined' ? plantFamilies : null)};
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
     const searchMessage = document.getElementById('searchMessage');
@@ -58,3 +68,40 @@ html(lang="en")
         searchMessage.style.display = 'none';
       }
     });
+
+    // Family / plant dropdowns (Plants page only)
+    const familySelect = document.getElementById('plant-family');
+    const plantSelect = document.getElementById('plant-select');
+
+    if (familySelect && plantSelect && plantFamilies) {
+      // Populate family dropdown from server-provided map
+      Object.keys(plantFamilies).forEach(family => {
+        const opt = document.createElement('option');
+        opt.value = family;
+        opt.textContent = family;
+        familySelect.appendChild(opt);
+      });
+
+      familySelect.addEventListener('change', () => {
+        const chosen = familySelect.value;
+        plantSelect.innerHTML = '<option value="">-- Select a plant --</option>';
+        if (!chosen) {
+          plantSelect.disabled = true;
+          return;
+        }
+        (plantFamilies[chosen] || []).forEach(name => {
+          const opt = document.createElement('option');
+          opt.value = name;
+          opt.textContent = name;
+          plantSelect.appendChild(opt);
+        });
+        plantSelect.disabled = false;
+      });
+
+      plantSelect.addEventListener('change', () => {
+        const chosen = plantSelect.value;
+        if (chosen) {
+          window.location.href = '?item=' + encodeURIComponent(chosen.toLowerCase());
+        }
+      });
+    }
