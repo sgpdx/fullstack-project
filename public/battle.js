@@ -1,10 +1,12 @@
 // Read server-side data once from the embedded JSON script tags
-const plantsData = JSON.parse(
-  document.getElementById("plants-data").textContent || "[]",
-);
-const zombiesData = JSON.parse(
-  document.getElementById("zombies-data").textContent || "[]",
-);
+const plantsData =
+  typeof document !== "undefined"
+    ? JSON.parse(document.getElementById("plants-data").textContent || "[]")
+    : [];
+const zombiesData =
+  typeof document !== "undefined"
+    ? JSON.parse(document.getElementById("zombies-data").textContent || "[]")
+    : [];
 
 function getToughnessRank(toughness) {
   if (!toughness) return 0;
@@ -351,5 +353,11 @@ function BattlePage() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("battle-root"));
-root.render(React.createElement(BattlePage));
+if (typeof document !== "undefined") {
+  const root = ReactDOM.createRoot(document.getElementById("battle-root"));
+  root.render(React.createElement(BattlePage));
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { getToughnessRank };
+}
