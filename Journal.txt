@@ -150,3 +150,9 @@ that API by doing a mock data test.  I also knew I wanted to test something with
 correctly, since a lot of the API data is inconsistent in how it is stylized.  So, GitHub Copilot suggested doing a test 
 for all the various values found in the "toughness" category, and I made sure it tested for case sensitivity there, and 
 also tests for the absence of a value to default to 0.
+- Just had CoPilot count how many lines of code I have; I had it count .pug and .js files, for a total of 931 lines.  
+But then I realized that the styles.css file count as well, which is 379 lines long, for a total of 1,310 lines of code,
+so that project requirement is now complete.
+- I am noticiing that the teacher still hasn't written in the requirements or in a post that we need to deploy our code,
+but she mentioned in an email to me personally that we should attempt to deploy to Vercel, so I will attempt that now.
+- Connected my github account, and about to import the repo and deploy it, so first let me merge my code to main
