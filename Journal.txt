@@ -140,3 +140,19 @@ issue with the API always returning a '404' despite having data.
 so for those it will say "unknown" and default to 0, and always lose. 
 - Added visualization of the plant and zombie selected to rock back and forth when pressing the battle button, then 
 saw a message (Congratulations if the plant wins, Aww too bad if the Zombie wins), and the name of who wins.
+
+Saturday March 14, 2026
+- Still no further videos have been released re: testing, so going over the PDF and the instructor's email for the 
+testing suite requirement.
+- I see the PDF recommends Jest, and I already knew I wanted to test the availability of the API data as the main focus 
+for my tests.  So, I decided to test one of the API endpoints (plants), and then to make sure my code can use data from
+that API by doing a mock data test.  I also knew I wanted to test something with case insensitivity to make sure that works
+correctly, since a lot of the API data is inconsistent in how it is stylized.  So, GitHub Copilot suggested doing a test 
+for all the various values found in the "toughness" category, and I made sure it tested for case sensitivity there, and 
+also tests for the absence of a value to default to 0.
+- Just had CoPilot count how many lines of code I have; I had it count .pug and .js files, for a total of 931 lines.  
+But then I realized that the styles.css file count as well, which is 379 lines long, for a total of 1,310 lines of code,
+so that project requirement is now complete.
+- I am noticiing that the teacher still hasn't written in the requirements or in a post that we need to deploy our code,
+but she mentioned in an email to me personally that we should attempt to deploy to Vercel, so I will attempt that now.
+- Connected my github account, and about to import the repo and deploy it, so first let me merge my code to main
