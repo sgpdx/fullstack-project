@@ -2,6 +2,9 @@
 
 - Created by Serena Glick, sglick@pdx.edu, Winter 2026
 
+## Deployed Site:
+https://fullstack-project-hazel.vercel.app?_vercel_share=rVpiJbLDO2nZJ2A5nwZD0n1r4dnZaW2J
+
 ## How to Run Locally
 
 - `npx nodemon app.js`
