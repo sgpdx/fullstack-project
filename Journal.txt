@@ -156,3 +156,6 @@ so that project requirement is now complete.
 - I am noticiing that the teacher still hasn't written in the requirements or in a post that we need to deploy our code,
 but she mentioned in an email to me personally that we should attempt to deploy to Vercel, so I will attempt that now.
 - Connected my github account, and about to import the repo and deploy it, so first let me merge my code to main
+
+-----
+- Further updates to the Journal will now be handled in the word (and later PDF) file only!

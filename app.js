@@ -170,6 +170,10 @@ app.use((req, res) => {
   res.status(404).send("404 - page not found");
 });
 
-app.listen(port, () => {
-  console.log(`listening on port http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`listening on port http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
