@@ -1,10 +1,8 @@
 # Final Project for Full Stack
 
-## [ WORK IN PROGRESS ]
-
 - Created by Serena Glick, sglick@pdx.edu, Winter 2026
 
-## How to Run
+## How to Run Locally
 
 - `npx nodemon app.js`
 - Then open http://localhost:5001
