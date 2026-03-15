@@ -3,6 +3,7 @@
   --grey: #333333;
   --green: #94ee6d;
   --orange: #ed6c21;
+  --deep-blue: #1a02cf;
 }
 
 * {
@@ -16,6 +17,11 @@ body {
 h1,
 h2 {
   color: var(--purple);
+}
+
+a,
+a:visited {
+  color: var(--deep-blue);
 }
 
 .container {
@@ -157,13 +163,13 @@ h2 {
 }
 
 .back-link {
-  color: #007bff;
+  color: var(--deep-blue);
   text-decoration: underline;
   display: inline-block;
   margin: 0.5rem 0;
 }
 .back-link:hover {
-  color: #0056b3;
+  color: var(--deep-blue);
 }
 
 .detail {
